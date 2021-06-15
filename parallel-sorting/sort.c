@@ -7,6 +7,8 @@
 //------------- quick sort
 void sort1(int values[], int begin, int end)
 {
+    omp_set_num_threads(16);
+
     int i, j, pivot, aux;
     i = begin;
     j = end-1;
@@ -30,10 +32,16 @@ void sort1(int values[], int begin, int end)
             j--;
         }
     }
-    if(j > begin)
+    if(j > begin) {
+        #pragma omp task default(none) firstprivate(values, begin, j) 
         sort1(values, begin, j+1);
-    if(i < end)
+        
+    }
+    if(i < end) {
+        #pragma omp task default(none) firstprivate(values, i, end) 
         sort1(values, i, end);
+        
+    }
 }
 
 
@@ -56,12 +64,16 @@ void sort2(int vetor[], int tamanho) {
     
     while (maior/exp > 0) {
         int bucket[dig] = { 0 };
+
         for (i = 0; i < tamanho; i++)
             bucket[(vetor[i] / exp) % dig]++;
+
         for (i = 1; i < dig; i++)
             bucket[i] += bucket[i - 1];
+
         for (i = tamanho - 1; i >= 0; i--)
             b[--bucket[(vetor[i] / exp) % dig]] = vetor[i];
+
         for (i = 0; i < tamanho; i++)
             vetor[i] = b[i];
         exp *= dig;

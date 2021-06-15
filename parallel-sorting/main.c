@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <omp.h>
 #include "sort.h"
 
 static int ini_vector (int **v, int n);
@@ -33,28 +33,37 @@ int main (int argc, char *argv[]) {
     if (!alloc_vector (&a, arraySize)) return 0;
     //  fprintf (stdout, "done!\n");
     
-    omp_set_num_threads(8);
     int run;
-    double start_time, run_time;
     for (run=0 ; run < runs ; run++) {
-        
+        double start_time, run_time;
         // copy n elements of master to a
         copy_vector (master, a, arraySize);
+        start_time = omp_get_wtime();
+        #pragma omp parallel num_threads(16) 
+        #pragma omp single nowait 
+        sort1(a, 0, arraySize);
+    
+        run_time = omp_get_wtime() - start_time;
+        printf("\n Execution time was %lf seconds\n ",run_time);
         
-        //    fprintf (stderr, "run=%d ... ;", run);
-        
-        switch (alg)
+        /*switch (alg)
         {
             case 1:
                 start_time = omp_get_wtime();
-                #pragma omp parallel
-                sort1(a, 0, arraySize);
+                #pragma omp parallel num_threads(16) {
+                    #pragma omp single nowait {
+                        sort1(a, 0, arraySize);
+                    }
+                }
                 run_time = omp_get_wtime() - start_time;
                 printf("\n Execution time was %lf seconds\n ",run_time);
                 break;
             case 2:
                 start_time = omp_get_wtime();
+                #pragma omp parallel
                 sort2(a, arraySize);
+                run_time = omp_get_wtime() - start_time;
+                printf("\n Execution time was %lf seconds\n ",run_time);
                 break;
             case 3:
                 start_time = omp_get_wtime();
@@ -70,7 +79,7 @@ int main (int argc, char *argv[]) {
                 break;
             default:
                 fprintf (stderr, "Insert correct option...");
-        }
+        }*/
         
         
     } // end runs

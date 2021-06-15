@@ -1,5 +1,5 @@
 # source files.
-SRC = sort.c main.c
+SRC = sortComparison.c
 
 OBJ = $(SRC:.cpp=.o)
 
