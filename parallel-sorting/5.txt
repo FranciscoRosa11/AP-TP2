@@ -1,0 +1,15 @@
+
+Size of the array (aprox.): 381 MBytes 
+TOTAL MEMORY ALLOCATED:  3 x array = (aprox.): 1143 MBytes 
+
+Initializing the arrays with random numbers...
+Initialization complete
+
+Sorting with custom PARALLEL QuickSort... 
+Sorted in (aprox.): 1.540093 seconds 
+
+
+Checking if the results are correct...
+The result with 'custom PARALLEL QuickSort' is ¡¡INCORRECT!!
+
+

@@ -1,0 +1,18 @@
+# started on Sun Jun 13 14:52:53 2021
+
+
+ Performance counter stats for './sort 3 5 10000':
+
+         10.989521      task-clock (msec)         #    0.915 CPUs utilized          
+                 2      context-switches          #    0.182 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               139      page-faults               #    0.013 M/sec                  
+          13516778      cycles                    #    1.230 GHz                    
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+          13294181      instructions              #    0.98  insns per cycle        
+           3178642      branches                  #  289.243 M/sec                  
+            367624      branch-misses             #   11.57% of all branches        
+
+       0.012006966 seconds time elapsed
+

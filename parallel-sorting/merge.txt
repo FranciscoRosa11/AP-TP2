@@ -1,0 +1,18 @@
+# started on Sun Jun 13 14:53:24 2021
+
+
+ Performance counter stats for './sort 4 5 10000':
+
+         13.796828      task-clock (msec)         #    0.941 CPUs utilized          
+                 4      context-switches          #    0.290 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+               149      page-faults               #    0.011 M/sec                  
+          19724984      cycles                    #    1.430 GHz                    
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+          27275530      instructions              #    1.38  insns per cycle        
+           5682422      branches                  #  411.864 M/sec                  
+            382925      branch-misses             #    6.74% of all branches        
+
+       0.014664462 seconds time elapsed
+

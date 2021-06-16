@@ -102,39 +102,7 @@ int main(){
 	}
 
 
-	printf("\nSorting with serial 'qsort' function of 'stdlib.h' ..."); fflush(stdout);
-	startTime = clock();
-	qsort(arr1, lenArr, sizeof(int), cmpfunc);
-	stopTime = clock();
-
 	
-	if( lenArr <= maxNumbersDisplayed ){
-		for( i = 0 ; i < lenArr; i++ ) 
-		{
-			printf("%d ", arr1[i]);
-		}
-		
-	}
-	printf("\nSorted in (aprox.): %f seconds \n\n", (double)(stopTime-startTime)/CLOCKS_PER_SEC);
-
-
-
-
-	printf("\nSorting with custom serial QuickSort..."); fflush(stdout);
-	startTime = clock();
-	quickSort(arr2, 0, lenArr-1);
-	stopTime = clock();
-
-	
-	if( lenArr <= maxNumbersDisplayed ){
-		for( i = 0 ; i < lenArr; i++ ) 
-		{
-			printf("%d ", arr2[i]);
-		}
-	}
-	printf("\nSorted in (aprox.): %f seconds \n\n", (double)(stopTime-startTime)/CLOCKS_PER_SEC);
-
-
 
 	printf("\nSorting with custom PARALLEL QuickSort... "); fflush(stdout);
 	startTime = omp_get_wtime();
@@ -156,19 +124,6 @@ int main(){
 	printf("\nChecking if the results are correct...\n");
 	typedef enum { false, true } bool;
 	bool correctResult;
-
-	correctResult=true;
-	i = 0;
-	while( (correctResult==true) && (i<lenArr) )
-	{
-		if(arr1[i]!=arr2[i]) { correctResult=false; }
-		i++;
-	}
-	if(correctResult==true){
-		printf("The result with 'custom serial QuickSort' is CORRECT\n");
-	}else{
-		printf("The result with 'custom serial QuickSort' is ¡¡INCORRECT!!\n");
-	}
 
 	correctResult = true;
 	i = 0;
