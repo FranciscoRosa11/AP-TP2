@@ -102,42 +102,36 @@ int main(){
 	}
 
 
-	
+	printf("\nSorting with sequential QuickSort.."); fflush(stdout);
+	startTime=omp_get_wtime();
+	quickSort(arr2, 0, lenArr-1);
+	stopTime = omp_get_wtime();
+
+	printf("\nSorted sequential in (aprox.): %f seconds \n\n", (stopTime-startTime));
+
+	int ok1 = 1;
+	int l1;
+	for(l1 = 0; l1 < lenArr-1 && ok1; l1++) {
+		if(arr2[l1]>arr2[l1+1]) {ok1 = 0; printf("SORTING SEQUENTIAL ERROR\n"); break;}
+	}
+	if(ok1)
+		printf("SORTING SEQUENTIAL OK\n");
 
 	printf("\nSorting with custom PARALLEL QuickSort... "); fflush(stdout);
 	startTime = omp_get_wtime();
 	quickSort_parallel(arr3, lenArr, numthreads);
 	stopTime = omp_get_wtime();
 
+	printf("\nSorted parallel in (aprox.): %f seconds \n\n", (stopTime-startTime));
 
-	if( lenArr <= maxNumbersDisplayed ){
-		for( i = 0 ; i < lenArr; i++ ) 
-		{
-			printf("%d ", arr3[i]);
-		}
+
+	int ok = 1;
+	int l;
+	for(l = 0; l < lenArr-1 && ok; l++) {
+		if(arr3[l]>arr3[l+1]) {ok = 0; printf("SORTING PARALLEL ERROR\n"); break;}
 	}
-	printf("\nSorted in (aprox.): %f seconds \n\n", (stopTime-startTime));
-
-
-
-
-	printf("\nChecking if the results are correct...\n");
-	typedef enum { false, true } bool;
-	bool correctResult;
-
-	correctResult = true;
-	i = 0;
-	while( (correctResult==true) && (i<lenArr) )
-	{
-		if(arr1[i]!=arr3[i]) { correctResult=false; }
-		i++;
-	}
-	if(correctResult==true){
-		printf("The result with 'custom PARALLEL QuickSort' is CORRECT\n\n");
-	}else{
-		printf("The result with 'custom PARALLEL QuickSort' is ¡¡INCORRECT!!\n");
-	}
-
+	if(ok)
+		printf("SORTING PARALLEL OK\n");
 
 
 

@@ -5,11 +5,14 @@ TOTAL MEMORY ALLOCATED:  3 x array = (aprox.): 1143 MBytes
 Initializing the arrays with random numbers...
 Initialization complete
 
+Sorting with sequential QuickSort..
+Sorted sequential in (aprox.): 11.705456 seconds 
+
+SORTING SEQUENTIAL OK
+
 Sorting with custom PARALLEL QuickSort... 
-Sorted in (aprox.): 1.540093 seconds 
+Sorted parallel in (aprox.): 1.521274 seconds 
 
-
-Checking if the results are correct...
-The result with 'custom PARALLEL QuickSort' is ¡¡INCORRECT!!
+SORTING PARALLEL OK
 
 

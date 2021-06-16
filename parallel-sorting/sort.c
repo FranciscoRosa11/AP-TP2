@@ -5,10 +5,7 @@
 #include <stdlib.h>
 
 //------------- quick sort
-void sort1(int values[], int begin, int end)
-{
-    omp_set_num_threads(16);
-
+void sort1(int values[], int begin, int end) {
     int i, j, pivot, aux;
     i = begin;
     j = end-1;
@@ -32,13 +29,11 @@ void sort1(int values[], int begin, int end)
             j--;
         }
     }
-    if(j > begin) {
-        #pragma omp task default(none) firstprivate(values, begin, j) 
+    if(j > begin) { 
         sort1(values, begin, j+1);
         
     }
-    if(i < end) {
-        #pragma omp task default(none) firstprivate(values, i, end) 
+    if(i < end) { 
         sort1(values, i, end);
         
     }

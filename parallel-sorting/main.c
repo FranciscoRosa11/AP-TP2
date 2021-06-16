@@ -39,8 +39,6 @@ int main (int argc, char *argv[]) {
         // copy n elements of master to a
         copy_vector (master, a, arraySize);
         start_time = omp_get_wtime();
-        #pragma omp parallel num_threads(16) 
-        #pragma omp single nowait 
         sort1(a, 0, arraySize);
     
         run_time = omp_get_wtime() - start_time;
