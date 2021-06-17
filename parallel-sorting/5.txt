@@ -6,12 +6,12 @@ Initializing the arrays with random numbers...
 Initialization complete
 
 Sorting with sequential QuickSort..
-Sorted sequential in (aprox.): 11.705456 seconds 
+Sorted sequential in (aprox.): 11.863239 seconds 
 
 SORTING SEQUENTIAL OK
 
 Sorting with custom PARALLEL QuickSort... 
-Sorted parallel in (aprox.): 1.521274 seconds 
+Sorted parallel in (aprox.): 1.499486 seconds 
 
 SORTING PARALLEL OK
 
